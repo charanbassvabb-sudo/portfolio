@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Charan Basava — full-stack developer and security-minded engineer building production web systems (React/TypeScript, FastAPI, Express, MySQL). BSc Computing &amp; Cybersecurity, University of Greenwich.">
+<meta name="theme-color" content="#0d1117">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Charan Basava — Full-Stack Developer & Security-Minded Engineer">
+<meta property="og:description" content="Full-stack systems that ship — production restaurant platform, an encrypted password manager, and the code behind both, on GitHub.">
+<meta property="og:image" content="covercharan.jpeg">
+<meta name="twitter:card" content="summary">
+
+<title>Charan Basava — Full-Stack Developer &amp; Security-Minded Engineer</title>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230d1117'/%3E%3Ctext x='50' y='66' font-family='monospace' font-size='46' font-weight='700' fill='%233fb950' text-anchor='middle'%3E%3E_%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0d1117;--bg-elev:#161b22;--bg-inset:#010409;
+  --border:#30363d;--border-muted:#21262d;
+  --text:#e6edf3;--muted:#8b949e;--dim:#6e7681;
+  --green:#3fb950;--blue:#58a6ff;--orange:#d29922;--red:#f85149;
+  --mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --radius:10px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden;line-height:1.6}
+
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(circle,rgba(230,237,243,0.05) 1px,transparent 1px);
+  background-size:26px 26px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,black 0%,transparent 75%);
+}
+
+.skip-link{position:absolute;left:-999px;top:0;background:var(--green);color:#000;padding:10px 18px;z-index:10001;font-family:var(--mono);font-size:0.85rem;border-radius:0 0 8px 0}
+.skip-link:focus{left:0}
+
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--green),var(--blue));z-index:10000;width:0%;transition:width 0.08s linear}
+
+a{color:inherit}
+::selection{background:rgba(63,185,80,0.3);color:var(--text)}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(14px);background:rgba(13,17,23,0.75);border-bottom:1px solid var(--border-muted)}
+.nav-logo{font-family:var(--mono);font-size:0.95rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.3px}
+.nav-logo span{color:var(--green)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;font-family:var(--mono);transition:color 0.2s;position:relative}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a.active::after{content:'';position:absolute;bottom:-6px;left:0;width:100%;height:2px;background:var(--green);border-radius:2px}
+.nav-gh{display:flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border);border-radius:100px;color:var(--text)!important;text-decoration:none;font-size:0.78rem;transition:all 0.2s}
+.nav-gh:hover{border-color:var(--green);color:var(--green)!important;background:rgba(63,185,80,0.08)}
+.nav-gh svg{width:14px;height:14px;fill:currentColor}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:1002;position:relative;background:none;border:none}
+.ham span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.25s;display:block}
+.ham.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+.mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(13,17,23,0.98);z-index:2000;align-items:center;justify-content:center}
+.mobile-nav-overlay.open{display:flex}
+.mobile-nav-overlay ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:32px}
+.mobile-nav-overlay ul li a{color:var(--muted);text-decoration:none;font-size:1.3rem;font-family:var(--mono);transition:color 0.2s}
+.mobile-nav-overlay ul li a:hover{color:var(--green)}
+
+/* ===== LAYOUT ===== */
+main{position:relative;z-index:1}
+section{padding:110px 60px;position:relative;max-width:1180px;margin:0 auto}
+.section-num{font-family:var(--mono);font-size:0.75rem;color:var(--green);letter-spacing:2px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section-num::before{content:'';width:24px;height:1px;background:var(--green)}
+.section-title{font-family:var(--mono);font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:700;letter-spacing:-0.5px;margin-bottom:44px}
+.section-title .dim{color:var(--dim)}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 60px 70px;max-width:1180px;margin:0 auto}
+.hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:44px;align-items:start;width:100%}
+
+.win{background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.win-bar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:var(--bg-inset);border-bottom:1px solid var(--border)}
+.win-dot{width:10px;height:10px;border-radius:50%}
+.win-dot.r{background:#f85149}.win-dot.y{background:#d29922}.win-dot.g{background:#3fb950}
+.win-tab{margin-left:10px;font-family:var(--mono);font-size:0.75rem;color:var(--dim)}
+.win-body{padding:26px 28px}
+
+.code-block{font-family:var(--mono);font-size:0.88rem;line-height:1.85}
+.code-line{display:flex;gap:18px}
+.ln{color:#484f58;user-select:none;min-width:14px;text-align:right}
+.tok-kw{color:#ff7b72}
+.tok-key{color:#7ee787}
+.tok-str{color:#a5d6ff}
+.tok-punct{color:#8b949e}
+.tok-comment{color:#8b949e;font-style:italic}
+.tok-cursor{display:inline-block;width:8px;height:1.1em;background:var(--green);vertical-align:-2px;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.hero-desc{font-family:var(--sans);color:var(--muted);font-size:0.98rem;line-height:1.8;margin:24px 0 28px}
+.hero-desc strong{color:var(--text);font-weight:600}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:12px 26px;border-radius:8px;font-family:var(--mono);font-size:0.82rem;text-decoration:none;transition:all 0.2s;cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent}
+.btn-primary{background:var(--green);color:#0d1117;font-weight:700}
+.btn-primary:hover{background:#4ac95d;transform:translateY(-1px)}
+.btn-ghost{background:transparent;border-color:var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+.hero-right{display:flex;flex-direction:column;gap:20px}
+.photo-card{padding:22px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.hero-photo{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid var(--border);display:block}
+.photo-name{font-family:var(--mono);font-weight:700;font-size:0.95rem}
+.photo-role{font-family:var(--mono);font-size:0.72rem;color:var(--muted);text-align:center}
+.photo-status{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:0.7rem;color:var(--green);padding:5px 12px;border:1px solid rgba(63,185,80,0.35);border-radius:100px;background:rgba(63,185,80,0.08)}
+.photo-status span{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s infinite}
+
+.gh-panel .win-body{padding:18px 20px;font-family:var(--mono);font-size:0.78rem}
+.gh-cmd{color:var(--dim);margin-bottom:12px}
+.gh-cmd .p{color:var(--green)}
+.gh-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--border-muted);color:var(--muted)}
+.gh-row:last-of-type{border-bottom:none}
+.gh-row b{color:var(--text);font-weight:600}
+.gh-link{display:block;margin-top:12px;color:var(--blue);text-decoration:none;font-size:0.75rem}
+.gh-link:hover{text-decoration:underline}
+
+/* ===== ABOUT ===== */
+#about{background:var(--bg-elev);border-top:1px solid var(--border-muted);border-bottom:1px solid var(--border-muted)}
+.about-grid{display:grid;grid-template-columns:1.3fr 0.7fr;gap:60px;align-items:start}
+.about-body p{color:var(--muted);line-height:1.9;font-size:0.98rem;margin-bottom:20px}
+.about-body p strong{color:var(--text);font-weight:600}
+.about-quote{border-left:3px solid var(--green);padding:4px 0 4px 20px;margin-top:28px;color:var(--text);font-size:1rem;font-style:italic}
+.about-stats{display:flex;flex-direction:column;gap:16px}
+.stat-block{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:border-color 0.2s}
+.stat-block:hover{border-color:var(--blue)}
+.stat-num{font-family:var(--mono);font-size:2rem;font-weight:800;color:var(--blue)}
+.stat-label{font-size:0.8rem;color:var(--muted);margin-top:4px}
+
+/* ===== STACK ===== */
+.stack-win .win-body{padding:0}
+.stack-row{display:flex;gap:0;border-bottom:1px solid var(--border-muted);font-family:var(--mono);font-size:0.86rem}
+.stack-row:last-child{border-bottom:none}
+.stack-key{flex:0 0 150px;padding:16px 20px;color:var(--orange);border-right:1px solid var(--border-muted);background:rgba(210,153,34,0.04)}
+.stack-val{flex:1;padding:16px 20px;color:var(--muted);line-height:1.7}
+.stack-val em{color:var(--text);font-style:normal}
+
+/* ===== PROJECTS ===== */
+.project{background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;margin-bottom:28px;overflow:hidden}
+.project-hd{padding:28px 32px;border-bottom:1px solid var(--border-muted);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px}
+.project-flag{display:inline-block;font-family:var(--mono);font-size:0.68rem;color:var(--green);border:1px solid rgba(63,185,80,0.35);background:rgba(63,185,80,0.08);padding:3px 10px;border-radius:100px;margin-bottom:10px}
+.project-title{font-family:var(--mono);font-size:1.3rem;font-weight:700}
+.project-live{font-family:var(--mono);font-size:0.78rem;color:var(--green)}
+.project-live a{color:inherit;text-decoration:none}
+.project-live a:hover{text-decoration:underline}
+.project-links{display:flex;gap:10px;flex-wrap:wrap}
+.project-link{padding:8px 18px;border:1px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:0.75rem;color:var(--text);text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+.project-link:hover{border-color:var(--blue);color:var(--blue)}
+.project-body{padding:28px 32px}
+.project-desc{color:var(--muted);line-height:1.85;font-size:0.95rem;margin-bottom:20px}
+.project-desc strong{color:var(--text)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.badge{font-family:var(--mono);font-size:0.72rem;color:var(--blue);background:rgba(88,166,255,0.1);border:1px solid rgba(88,166,255,0.25);padding:4px 11px;border-radius:6px}
+.eng-notes{list-style:none;display:flex;flex-direction:column;gap:10px}
+.eng-notes li{color:var(--muted);font-size:0.9rem;line-height:1.7;padding-left:22px;position:relative}
+.eng-notes li::before{content:'▸';position:absolute;left:0;color:var(--green)}
+.eng-notes li strong{color:var(--text)}
+
+.diagram-wrap{overflow-x:auto;margin-top:24px;background:var(--bg-inset);border:1px solid var(--border-muted);border-radius:10px;padding:16px}
+.diagram-wrap svg{display:block;min-width:640px;width:100%;height:auto}
+
+/* ===== CV ===== */
+#cv{text-align:center;background:var(--bg-elev);border-top:1px solid var(--border-muted);border-bottom:1px solid var(--border-muted)}
+.cv-inner{max-width:560px;margin:0 auto}
+.cv-inner p{color:var(--muted);margin-bottom:28px;font-size:0.95rem;line-height:1.8}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:start}
+.contact-info h3{font-family:var(--mono);font-size:1.3rem;font-weight:700;margin-bottom:16px}
+.contact-info p{color:var(--muted);line-height:1.85;margin-bottom:32px;font-size:0.95rem}
+.contact-links{display:flex;flex-direction:column;gap:12px}
+.contact-link{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--bg-elev);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:all 0.2s;font-family:var(--mono);font-size:0.82rem}
+.contact-link:hover{border-color:var(--green);transform:translateX(4px)}
+.contact-link-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;background:var(--bg-inset)}
+.contact-link small{display:block;color:var(--dim);font-size:0.65rem;margin-bottom:2px}
+.contact-link-arrow{margin-left:auto;color:var(--dim)}
+
+.form-win .win-body{padding:26px}
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-family:var(--mono);font-size:0.72rem;color:var(--muted);margin-bottom:7px}
+.form-input{width:100%;background:var(--bg-inset);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-family:var(--sans);font-size:0.9rem;transition:border-color 0.2s;outline:none}
+.form-input:focus{border-color:var(--green)}
+textarea.form-input{resize:vertical;min-height:110px}
+.hp-field{position:absolute;left:-9999px}
+.form-submit{width:100%;padding:14px;background:var(--green);border:none;border-radius:8px;color:#0d1117;font-family:var(--mono);font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.2s;margin-top:6px}
+.form-submit:hover{background:#4ac95d}
+.form-submit:disabled{opacity:0.6;cursor:wait}
+.form-note{font-family:var(--mono);font-size:0.72rem;color:var(--dim);margin-top:10px;text-align:center}
+.form-note a{color:var(--blue)}
+
+/* ===== FOOTER ===== */
+footer{padding:32px 60px;border-top:1px solid var(--border-muted);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--mono);max-width:1180px;margin:0 auto}
+.footer-name{font-size:0.85rem;color:var(--muted)}
+.footer-name span{color:var(--green)}
+.footer-copy{font-size:0.75rem;color:var(--dim)}
+
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:500}
+.wa-btn{width:50px;height:50px;background:#3fb950;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 6px 20px rgba(63,185,80,0.35);transition:all 0.2s}
+.wa-btn:hover{transform:scale(1.08)}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .ham{display:flex}
+  section{padding:70px 22px}
+  .hero{padding:110px 22px 60px}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .contact-grid{grid-template-columns:1fr;gap:36px}
+  .stack-key{flex:0 0 120px}
+  footer{padding:24px 22px;flex-direction:column;text-align:center}
+  .wa-float{bottom:18px;right:18px}
+  .project-hd{padding:22px}
+  .project-body{padding:22px}
+}
+@media(max-width:480px){
+  .win-body{padding:18px}
+  .code-block{font-size:0.78rem}
+  .stack-row{flex-direction:column}
+  .stack-key{border-right:none;border-bottom:1px solid var(--border-muted)}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+
+<nav aria-label="Primary">
+  <a href="#top" class="nav-logo">~/<span>charan-basava</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://github.com/charanbassvabb-sudo" target="_blank" rel="noopener noreferrer" class="nav-gh">
+    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+  <button class="ham" id="ham" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://github.com/charanbassvabb-sudo" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+  </ul>
+</div>
+
+<main id="main">
+<div id="top"></div>
+<section class="hero" aria-label="Introduction">
+  <div class="hero-grid">
+    <div>
+      <div class="win">
+        <div class="win-bar">
+          <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+          <span class="win-tab">profile.ts</span>
+        </div>
+        <div class="win-body">
+          <div class="code-block">
+            <div class="code-line"><span class="ln">1</span><span><span class="tok-kw">const</span> <span class="tok-key">dev</span> <span class="tok-punct">=</span> <span class="tok-punct">{</span></span></div>
+            <div class="code-line"><span class="ln">2</span><span>&nbsp;&nbsp;<span class="tok-key">name</span><span class="tok-punct">:</span> <span class="tok-str">"Charan Basava"</span><span class="tok-punct">,</span></span></div>
+            <div class="code-line"><span class="ln">3</span><span>&nbsp;&nbsp;<span class="tok-key">focus</span><span class="tok-punct">:</span> <span class="tok-str">"full-stack development + application security"</span><span class="tok-punct">,</span></span></div>
+            <div class="code-line"><span class="ln">4</span><span>&nbsp;&nbsp;<span class="tok-key">based</span><span class="tok-punct">:</span> <span class="tok-str">"Lusaka, Zambia"</span><span class="tok-punct">,</span></span></div>
+            <div class="code-line"><span class="ln">5</span><span>&nbsp;&nbsp;<span class="tok-key">studying</span><span class="tok-punct">:</span> <span class="tok-str">"BSc Computing &amp; Cybersecurity — Univ. of Greenwich"</span><span class="tok-punct">,</span></span></div>
+            <div class="code-line"><span class="ln">6</span><span>&nbsp;&nbsp;<span class="tok-key">shipping</span><span class="tok-punct">:</span> <span class="tok-str">"indishzambia.com — live, two-branch restaurant platform"</span><span class="tok-punct">,</span></span></div>
+            <div class="code-line"><span class="ln">7</span><span>&nbsp;&nbsp;<span class="tok-key">status</span><span class="tok-punct">:</span> <span class="tok-str">"open to internships &amp; collaboration"</span><span class="tok-punct">,</span></span></div>
+            <div class="code-line"><span class="ln">8</span><span><span class="tok-punct">};</span></span></div>
+            <div class="code-line"><span class="ln">9</span><span class="tok-comment">// scroll for the receipts ↓<span class="tok-cursor"></span></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="hero-desc">I'm a Computer Science student who'd rather ship a real system than a demo. <strong>Indish</strong> — a full-stack restaurant + loyalty platform — is live in production for an actual business with two branches. Every project below is real, deployed, and linked to code you can read.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-primary">View projects →</a>
+        <a href="Charan_Basava_CV.pdf" download class="btn btn-ghost">⬇ Resume</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="win photo-card">
+        <img src="covercharan.jpeg" alt="Portrait of Charan Basava" class="hero-photo" width="150" height="150">
+        <div class="photo-name">Charan Basava</div>
+        <div class="photo-role">Full-Stack Developer · Security-Minded</div>
+        <div class="photo-status"><span></span>Building — actively shipping</div>
+      </div>
+      <div class="win gh-panel">
+        <div class="win-bar">
+          <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+          <span class="win-tab">github stats</span>
+        </div>
+        <div class="win-body">
+          <div class="gh-cmd"><span class="p">$</span> curl api.github.com/users/charanbassvabb-sudo</div>
+          <div class="gh-row"><span>public_repos</span><b id="ghRepos">3</b></div>
+          <div class="gh-row"><span>primary_languages</span><b id="ghLangs">TypeScript, Python, HTML</b></div>
+          <div class="gh-row"><span>last_push</span><b id="ghLastPush">recently</b></div>
+          <a href="https://github.com/charanbassvabb-sudo" target="_blank" rel="noopener noreferrer" class="gh-link">→ view live profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" aria-labelledby="about-h">
+  <div class="section-num">01 / about</div>
+  <h2 class="section-title" id="about-h">Who I <span class="dim">am</span></h2>
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>I'm <strong>Charan Basava</strong>, a Computer Science student in Lusaka, Zambia, studying towards a <strong>BSc in Computing &amp; Cybersecurity</strong> at the University of Greenwich. I build web systems where security is designed in from the schema up, not bolted on afterward.</p>
+      <p>My dissertation project, <strong>CipherVault</strong>, is a password manager built on FastAPI with Fernet symmetric encryption. Outside coursework, I've built and deployed <strong>Indish</strong> — a full production platform for a real two-branch restaurant business, covering the public site, a server-validated reservation flow, an admin dashboard, and a separate branch-aware loyalty program, all wired to WhatsApp for customer notifications.</p>
+      <p>I care about the parts that don't show up in a screenshot: server-side validation that doesn't trust the client, httpOnly auth cookies instead of localStorage tokens, and databases that stay scoped to the thing they're supposed to own.</p>
+      <div class="about-quote">Three shipped systems, all linked below — no filler projects, no dead links.</div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-block"><div class="stat-num">2</div><div class="stat-label">Live production sites — indishzambia.com &amp; basavagroup.org</div></div>
+      <div class="stat-block"><div class="stat-num">3</div><div class="stat-label">Public repositories, all linked from this page</div></div>
+      <div class="stat-block"><div class="stat-num">BSc</div><div class="stat-label">Computing &amp; Cybersecurity — University of Greenwich, in progress</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="stack" aria-labelledby="stack-h">
+  <div class="section-num">02 / stack</div>
+  <h2 class="section-title" id="stack-h">What I <span class="dim">build with</span></h2>
+  <div class="win stack-win reveal">
+    <div class="win-bar">
+      <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+      <span class="win-tab">stack.yaml</span>
+    </div>
+    <div class="win-body">
+      <div class="stack-row"><div class="stack-key">frontend</div><div class="stack-val"><em>React, TypeScript</em>, Vite, TanStack Start (SSR), React Router, Tailwind CSS, Framer Motion</div></div>
+      <div class="stack-row"><div class="stack-key">backend</div><div class="stack-val"><em>FastAPI</em> (Python), <em>Express</em> (Node.js), Prisma ORM, Zod validation, REST API design</div></div>
+      <div class="stack-row"><div class="stack-key">database</div><div class="stack-val"><em>MySQL</em> — schema design, migrations, multi-tenant scoping (branch-level isolation)</div></div>
+      <div class="stack-row"><div class="stack-key">security</div><div class="stack-val"><em>Fernet symmetric encryption</em>, JWT auth via httpOnly cookies, password hashing, rate limiting, Helmet, scoped CORS, server-side-only trust boundaries</div></div>
+      <div class="stack-row"><div class="stack-key">infra</div><div class="stack-val"><em>Nginx</em>, PM2, DigitalOcean droplets, Let's Encrypt, Git</div></div>
+      <div class="stack-row"><div class="stack-key">integrations</div><div class="stack-val">WhatsApp Cloud API (Meta) — templated + free-text business messaging</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" aria-labelledby="projects-h">
+  <div class="section-num">03 / projects</div>
+  <h2 class="section-title" id="projects-h">Things I've <span class="dim">shipped</span></h2>
+
+  <article class="project reveal">
+    <div class="project-hd">
+      <div>
+        <div class="project-flag">● live in production</div>
+        <div class="project-title">Indish — Restaurant &amp; Loyalty Platform</div>
+        <div class="project-live">→ <a href="https://indishzambia.com" target="_blank" rel="noopener noreferrer">indishzambia.com</a></div>
+      </div>
+      <div class="project-links">
+        <a href="https://indishzambia.com" target="_blank" rel="noopener noreferrer" class="project-link">Live site ↗</a>
+        <a href="https://github.com/charanbassvabb-sudo/Indish-loyalty-dashboard-and-website" target="_blank" rel="noopener noreferrer" class="project-link">Source ↗</a>
+      </div>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">A full-stack platform for a real Indian restaurant with <strong>two independently-run branches</strong> (Lusaka &amp; Kitwe): public site with a 190-dish menu, a mobile-money-backed reservation flow, a staff admin dashboard, and a <strong>separate</strong> branch-aware loyalty program that talks to it only through deep links — never a shared login or database.</p>
+      <div class="badges">
+        <span class="badge">React + Vite + TS</span><span class="badge">Express + Prisma</span><span class="badge">TanStack Start (SSR)</span><span class="badge">MySQL</span><span class="badge">WhatsApp Cloud API</span><span class="badge">Nginx + PM2 · DigitalOcean</span>
+      </div>
+      <ul class="eng-notes">
+        <li><strong>Nothing client-trusted:</strong> the ZMW 100/guest deposit and the rolling 24-hour booking window are both enforced server-side (Zod <code>superRefine</code>), not just in the UI.</li>
+        <li><strong>Two databases, one server:</strong> the restaurant backend and the loyalty app each own a separate MySQL database — connected to each other only by pre-filled deep links, so a bug in one can't touch the other's data.</li>
+        <li><strong>Real notifications:</strong> confirmed bookings trigger an approved WhatsApp Business template to the customer and a free-text alert to staff via Meta's Cloud API.</li>
+        <li><strong>Auth done properly:</strong> admin sessions use JWT in httpOnly cookies (not localStorage), behind rate limiting, Helmet, and CORS scoped to the real origin.</li>
+        <li><strong>Deployed, not demoed:</strong> Nginx + PM2 on a DigitalOcean droplet with Let's Encrypt TLS — this is the config actually serving indishzambia.com.</li>
+      </ul>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 900 470" role="img" aria-labelledby="diagTitle diagDesc">
+          <title id="diagTitle">Indish system architecture</title>
+          <desc id="diagDesc">Browser connects to a Nginx reverse proxy on a DigitalOcean droplet serving the React frontend and Express backend, which writes to a MySQL "indish" database and calls the WhatsApp Cloud API. A separately-deployed TanStack Start loyalty app writes to a separate MySQL "indish_loyalty" database on the same server and also calls the WhatsApp Cloud API. The backend and loyalty app connect to each other only via deep links, not a shared database.</desc>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0L10 5L0 10z" fill="#58a6ff"/>
+            </marker>
+          </defs>
+          <style>
+            .dbox{fill:#161b22;stroke:#30363d;stroke-width:1.5;rx:8}
+            .dtext{font-family:'JetBrains Mono',monospace;fill:#e6edf3;font-size:13px}
+            .dtext2{font-family:'JetBrains Mono',monospace;fill:#8b949e;font-size:11px}
+            .dgroup{fill:none;stroke:#30363d;stroke-width:1;stroke-dasharray:4 4;rx:12}
+            .dgrouplabel{font-family:'JetBrains Mono',monospace;fill:#6e7681;font-size:11px}
+            .dline{stroke:#58a6ff;stroke-width:1.5;fill:none;marker-end:url(#arrow)}
+            .ddash{stroke:#d29922;stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+            .dlabel{font-family:'JetBrains Mono',monospace;fill:#d29922;font-size:10.5px}
+          </style>
+
+          <rect x="360" y="16" width="180" height="46" rx="8" class="dbox"/>
+          <text x="450" y="44" text-anchor="middle" class="dtext">Browser</text>
+
+          <rect x="640" y="16" width="220" height="46" rx="8" class="dbox"/>
+          <text x="750" y="38" text-anchor="middle" class="dtext">WhatsApp Cloud API</text>
+          <text x="750" y="53" text-anchor="middle" class="dtext2">Meta Business</text>
+
+          <rect x="55" y="115" width="410" height="200" rx="12" class="dgroup"/>
+          <text x="70" y="105" class="dgrouplabel">DigitalOcean droplet — Nginx + PM2</text>
+
+          <rect x="80" y="150" width="170" height="60" rx="8" class="dbox"/>
+          <text x="165" y="176" text-anchor="middle" class="dtext">Frontend</text>
+          <text x="165" y="193" text-anchor="middle" class="dtext2">React + Vite (static)</text>
+
+          <rect x="270" y="150" width="175" height="60" rx="8" class="dbox"/>
+          <text x="357" y="176" text-anchor="middle" class="dtext">Backend</text>
+          <text x="357" y="193" text-anchor="middle" class="dtext2">Express + Prisma</text>
+
+          <rect x="540" y="150" width="220" height="66" rx="8" class="dbox"/>
+          <text x="650" y="174" text-anchor="middle" class="dtext">Loyalty App</text>
+          <text x="650" y="190" text-anchor="middle" class="dtext2">TanStack Start (SSR)</text>
+          <text x="650" y="205" text-anchor="middle" class="dtext2">deployed separately</text>
+
+          <rect x="130" y="390" width="640" height="66" rx="12" class="dgroup"/>
+          <text x="145" y="380" class="dgrouplabel">MySQL — single server, two isolated databases</text>
+          <rect x="175" y="408" width="200" height="34" rx="7" class="dbox"/>
+          <text x="275" y="430" text-anchor="middle" class="dtext2">db: indish</text>
+          <rect x="510" y="408" width="220" height="34" rx="7" class="dbox"/>
+          <text x="620" y="430" text-anchor="middle" class="dtext2">db: indish_loyalty</text>
+
+          <path d="M420 62 L357 150" class="dline"/>
+          <path d="M480 62 L650 150" class="dline"/>
+          <path d="M357 210 L275 408" class="dline"/>
+          <path d="M650 216 L620 408" class="dline"/>
+          <path d="M420 178 L640 45" class="dline" stroke-dasharray="2 3"/>
+          <path d="M660 178 L720 62" class="dline" stroke-dasharray="2 3"/>
+
+          <path d="M445 180 L540 180" class="ddash"/>
+          <text x="492" y="230" text-anchor="middle" class="dlabel">deep links only —</text>
+          <text x="492" y="243" text-anchor="middle" class="dlabel">no shared DB or login</text>
+        </svg>
+      </div>
+    </div>
+  </article>
+
+  <article class="project reveal">
+    <div class="project-hd">
+      <div>
+        <div class="project-flag">● dissertation project · 2025</div>
+        <div class="project-title">CipherVault</div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/charanbassvabb-sudo/CipherVault" target="_blank" rel="noopener noreferrer" class="project-link">Source ↗</a>
+      </div>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">A full-stack password manager: register, log in, and store/retrieve/delete credentials that are <strong>encrypted at rest</strong> with Fernet symmetric encryption, never stored in plaintext. Built as my final-year dissertation for the BSc Computing &amp; Cybersecurity programme at the University of Greenwich.</p>
+      <div class="badges">
+        <span class="badge">FastAPI</span><span class="badge">Python</span><span class="badge">MySQL</span><span class="badge">Fernet encryption</span>
+      </div>
+      <ul class="eng-notes">
+        <li><strong>Encryption at rest:</strong> every stored credential is symmetrically encrypted with Fernet before it touches the database — a compromised DB dump alone isn't enough to read passwords.</li>
+        <li><strong>Scoped access:</strong> users can only ever retrieve or delete records tied to their own authenticated session.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="project reveal">
+    <div class="project-hd">
+      <div>
+        <div class="project-flag">● live in production</div>
+        <div class="project-title">Basava Group — Business Website</div>
+        <div class="project-live">→ <a href="https://basavagroup.org" target="_blank" rel="noopener noreferrer">basavagroup.org</a></div>
+      </div>
+      <div class="project-links">
+        <a href="https://basavagroup.org" target="_blank" rel="noopener noreferrer" class="project-link">Live site ↗</a>
+        <a href="https://github.com/charanbassvabb-sudo/Basava-website" target="_blank" rel="noopener noreferrer" class="project-link">Source ↗</a>
+      </div>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">The public web presence for a diversified Lusaka-based organisation spanning <strong>construction, financial advisory, and community development</strong> — built for clarity and conversion rather than decoration, and live in production today.</p>
+      <div class="badges">
+        <span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section id="cv" aria-labelledby="cv-h">
+  <div class="section-num" style="justify-content:center">04 / resume</div>
+  <h2 class="section-title" id="cv-h" style="text-align:center">Want the <span class="dim">full picture?</span></h2>
+  <div class="cv-inner reveal">
+    <p>Education, the projects above in more depth, and the full technical skill list — as a PDF.</p>
+    <a href="Charan_Basava_CV.pdf" download class="btn btn-primary">⬇ Download CV</a>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="contact-h">
+  <div class="section-num">05 / contact</div>
+  <h2 class="section-title" id="contact-h">Let's <span class="dim">connect</span></h2>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Open to collaborating</h3>
+      <p>Looking for internships, open-source collaboration, and student projects worth building properly. If you've read this far, you already know I'll actually ship it — reach out.</p>
+      <div class="contact-links">
+        <a href="mailto:charanbassva.bb@gmail.com" class="contact-link"><span class="contact-link-icon">📧</span><div><small>EMAIL</small>charanbassva.bb@gmail.com</div><span class="contact-link-arrow">→</span></a>
+        <a href="tel:+260964599763" class="contact-link"><span class="contact-link-icon">📱</span><div><small>PHONE</small>+260 964 599 763</div><span class="contact-link-arrow">→</span></a>
+        <a href="https://www.linkedin.com/in/charan-basava/" target="_blank" rel="noopener noreferrer" class="contact-link"><span class="contact-link-icon">💼</span><div><small>LINKEDIN</small>charan-basava</div><span class="contact-link-arrow">→</span></a>
+        <a href="https://wa.me/260964599763" target="_blank" rel="noopener noreferrer" class="contact-link"><span class="contact-link-icon">💬</span><div><small>WHATSAPP</small>Message me directly</div><span class="contact-link-arrow">→</span></a>
+        <a href="https://github.com/charanbassvabb-sudo" target="_blank" rel="noopener noreferrer" class="contact-link"><span class="contact-link-icon">💻</span><div><small>GITHUB</small>charanbassvabb-sudo</div><span class="contact-link-arrow">→</span></a>
+      </div>
+    </div>
+    <div class="win form-win reveal">
+      <div class="win-bar">
+        <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+        <span class="win-tab">contact.sh</span>
+      </div>
+      <div class="win-body">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hp-field"><label>Leave this empty: <input name="bot-field"></label></p>
+          <div class="form-group"><label class="form-label" for="f-name">Your name</label><input type="text" id="f-name" name="name" class="form-input" placeholder="John Doe" required></div>
+          <div class="form-group"><label class="form-label" for="f-email">Email</label><input type="email" id="f-email" name="email" class="form-input" placeholder="john@example.com" required></div>
+          <div class="form-group"><label class="form-label" for="f-subject">Subject</label><input type="text" id="f-subject" name="subject" class="form-input" placeholder="Let's collaborate" required></div>
+          <div class="form-group"><label class="form-label" for="f-message">Message</label><textarea id="f-message" name="message" class="form-input" placeholder="Tell me about your project or idea..." required></textarea></div>
+          <button type="submit" class="form-submit" id="formSubmitBtn">Send message →</button>
+          <div class="form-note" id="formNote">Sent via Netlify Forms — no third-party tracking. Prefer email? <a href="mailto:charanbassva.bb@gmail.com">charanbassva.bb@gmail.com</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-name">CHARAN <span>BASAVA</span></div>
+  <div class="footer-copy">© 2026 — built by hand, deployed for real.</div>
+</footer>
+
+<div class="wa-float">
+  <a href="https://wa.me/260964599763" target="_blank" rel="noopener noreferrer" class="wa-btn" aria-label="Message on WhatsApp">💬</a>
+</div>
+
+<script>
+// SCROLL PROGRESS
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement,t=s.scrollTop,h=s.scrollHeight-s.clientHeight;
+  document.getElementById('progress').style.width=(h>0?(t/h*100):0)+'%';
+});
+
+// HAMBURGER
+const ham=document.getElementById('ham'),overlay=document.getElementById('mobileNavOverlay');
+ham.addEventListener('click',()=>{
+  const open=ham.classList.toggle('open');
+  overlay.classList.toggle('open');
+  ham.setAttribute('aria-expanded',open?'true':'false');
+});
+overlay.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  ham.classList.remove('open');overlay.classList.remove('open');ham.setAttribute('aria-expanded','false');
+}));
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>entries.forEach(en=>{
+  if(en.isIntersecting)en.target.classList.add('visible');
+}),{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ACTIVE NAV LINK
+const navLinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('main section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-160)cur=s.id;});
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+});
+
+// LIVE GITHUB STATS (progressive enhancement — static fallback already in the HTML)
+(async()=>{
+  const CACHE_KEY='gh-stats-v1';
+  const render=(data)=>{
+    document.getElementById('ghRepos').textContent=data.repoCount;
+    document.getElementById('ghLangs').textContent=data.langs;
+    document.getElementById('ghLastPush').textContent=data.lastPush;
+  };
+  try{
+    const cached=sessionStorage.getItem(CACHE_KEY);
+    if(cached){render(JSON.parse(cached));return;}
+    const res=await fetch('https://api.github.com/users/charanbassvabb-sudo/repos?sort=pushed&per_page=10');
+    if(!res.ok)throw new Error('rate limited');
+    const repos=await res.json();
+    const real=repos.filter(r=>!r.fork&&!r.archived);
+    const langs=[...new Set(real.map(r=>r.language).filter(Boolean))].slice(0,3).join(', ')||'—';
+    const lastPushDate=new Date(real[0]?.pushed_at||Date.now());
+    const days=Math.floor((Date.now()-lastPushDate)/86400000);
+    const lastPush=days<=0?'today':days===1?'1 day ago':days<30?days+' days ago':lastPushDate.toLocaleDateString('en-GB',{month:'short',year:'numeric'});
+    const data={repoCount:real.length,langs,lastPush};
+    sessionStorage.setItem(CACHE_KEY,JSON.stringify(data));
+    render(data);
+  }catch(e){ /* static fallback already rendered in the markup */ }
+})();
+
+// CONTACT FORM — real Netlify Forms AJAX submit
+const form=document.getElementById('contactForm');
+const submitBtn=document.getElementById('formSubmitBtn');
+const formNote=document.getElementById('formNote');
+form.addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  submitBtn.disabled=true;
+  submitBtn.textContent='Sending…';
+  const data=new FormData(form);
+  try{
+    const res=await fetch('/',{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(data).toString()
+    });
+    if(!res.ok)throw new Error('submit failed');
+    submitBtn.textContent='Sent ✓';
+    submitBtn.style.background='#3fb950';
+    formNote.textContent='Thanks — I\'ll get back to you soon.';
+    form.reset();
+  }catch(err){
+    submitBtn.textContent='Send message →';
+    submitBtn.disabled=false;
+    formNote.innerHTML='Couldn\'t reach the form handler (this page needs to be deployed on Netlify for that). Email me directly: <a href="mailto:charanbassva.bb@gmail.com">charanbassva.bb@gmail.com</a>';
+  }
+});
+</script>
+</body>
+</html>
