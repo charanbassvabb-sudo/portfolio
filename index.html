@@ -9,7 +9,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Charan Basava — Full-Stack Developer & Security-Minded Engineer">
-<meta property="og:description" content="Full-stack systems that ship — production restaurant platform, an encrypted password manager, and the code behind both, on GitHub.">
+<meta property="og:description" content="Full-stack systems that ship — four live business sites (restaurant platform, pool club, boutique, company site) and an encrypted password manager.">
 <meta property="og:image" content="covercharan.jpeg">
 <meta name="twitter:card" content="summary">
 
@@ -169,6 +169,54 @@ section{padding:110px 60px;position:relative;max-width:1180px;margin:0 auto}
 .eng-notes li::before{content:'▸';position:absolute;left:0;color:var(--green)}
 .eng-notes li strong{color:var(--text)}
 
+/* projects: toolbar, filters, client/tech view */
+.proj-intro{color:var(--muted);font-size:0.95rem;line-height:1.75;margin:-24px 0 28px;max-width:680px}
+.proj-intro strong{color:var(--text)}
+.proj-toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px;position:sticky;top:64px;z-index:5;padding:12px 0;background:rgba(13,17,23,0.9);backdrop-filter:blur(10px)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:0.75rem;padding:7px 14px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s}
+.chip:hover{color:var(--text);border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:var(--bg);font-weight:600}
+.chip .n{opacity:0.55;margin-left:4px}
+.view-toggle{display:inline-flex;padding:3px;border:1px solid var(--border);border-radius:100px;background:var(--bg-inset)}
+.view-toggle button{font-family:var(--mono);font-size:0.75rem;padding:7px 14px;border:none;border-radius:100px;background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s}
+.view-toggle button:hover{color:var(--text)}
+.view-toggle button[aria-pressed="true"]{background:var(--green);color:#0d1117;font-weight:700}
+.proj-count{font-family:var(--mono);font-size:0.72rem;color:var(--dim);margin-bottom:14px}
+#projects[data-view="client"] .view-tech,#projects[data-view="tech"] .view-client{display:none}
+.project.is-hidden{display:none}
+.project.pop{animation:pop 0.35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.view-client,.view-tech{animation:pop 0.3s ease}
+
+.browser{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--bg-inset);border-bottom:1px solid var(--border)}
+.browser .url{flex:1;min-width:0;margin-left:8px;font-family:var(--mono);font-size:0.75rem;color:var(--muted);background:var(--bg);border:1px solid var(--border-muted);border-radius:100px;padding:5px 14px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:all 0.2s}
+.browser .url:hover{color:var(--text);border-color:var(--blue)}
+.browser .url .lock{color:var(--green);margin-right:6px}
+.browser .url.offline{pointer-events:none;color:var(--dim)}
+.project-flag.alt{color:var(--blue);border-color:rgba(88,166,255,0.35);background:rgba(88,166,255,0.08)}
+.project-tag{color:var(--muted);font-size:0.92rem;margin-top:6px}
+
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-muted);border-bottom:1px solid var(--border-muted)}
+.fact{background:var(--bg-elev);padding:14px 22px}
+.fact small{display:block;font-family:var(--mono);font-size:0.62rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--dim);margin-bottom:3px}
+.fact span{font-size:0.86rem;color:var(--text)}
+
+.goal-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.goal{color:var(--text);font-size:1rem;line-height:1.7;margin-bottom:22px}
+.features{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:20px}
+.feature{display:flex;gap:12px;padding:14px 16px;background:var(--bg);border:1px solid var(--border-muted);border-radius:10px;transition:border-color 0.2s,transform 0.2s}
+.feature:hover{border-color:rgba(63,185,80,0.5);transform:translateY(-2px)}
+.feature-ico{font-size:1.25rem;line-height:1.3;flex-shrink:0}
+.feature b{display:block;font-size:0.88rem;color:var(--text);margin-bottom:2px}
+.feature p{font-size:0.82rem;color:var(--muted);line-height:1.55}
+.outcome{display:flex;gap:10px;padding:14px 18px;border-left:3px solid var(--green);background:rgba(63,185,80,0.06);border-radius:0 8px 8px 0;font-size:0.9rem;color:var(--text);line-height:1.6}
+.outcome b{color:var(--green);font-family:var(--mono);font-size:0.78rem;white-space:nowrap;padding-top:2px}
+
+.proj-cta{margin-top:12px;padding:30px 32px;border:1px dashed var(--border);border-radius:14px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.proj-cta h3{font-family:var(--mono);font-size:1.1rem;margin-bottom:4px}
+.proj-cta p{color:var(--muted);font-size:0.9rem}
+
 .diagram-wrap{overflow-x:auto;margin-top:24px;background:var(--bg-inset);border:1px solid var(--border-muted);border-radius:10px;padding:16px}
 .diagram-wrap svg{display:block;min-width:640px;width:100%;height:auto}
 
@@ -230,6 +278,10 @@ footer{padding:32px 60px;border-top:1px solid var(--border-muted);display:flex;a
   .wa-float{bottom:18px;right:18px}
   .project-hd{padding:22px}
   .project-body{padding:22px}
+  .proj-toolbar{position:static;background:none;padding:0}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .fact{padding:12px 18px}
+  .proj-cta{padding:24px 22px}
 }
 @media(max-width:480px){
   .win-body{padding:18px}
@@ -329,12 +381,12 @@ footer{padding:32px 60px;border-top:1px solid var(--border-muted);display:flex;a
   <div class="about-grid">
     <div class="about-body reveal">
       <p>I'm <strong>Charan Basava</strong>, a Computer Science student in Lusaka, Zambia, studying towards a <strong>BSc in Computing &amp; Cybersecurity</strong> at the University of Greenwich. I build web systems where security is designed in from the schema up, not bolted on afterward.</p>
-      <p>My dissertation project, <strong>CipherVault</strong>, is a password manager built on FastAPI with Fernet symmetric encryption. Outside coursework, I've built and deployed <strong>Indish</strong> — a full production platform for a real two-branch restaurant business, covering the public site, a server-validated reservation flow, an admin dashboard, and a separate branch-aware loyalty program, all wired to WhatsApp for customer notifications.</p>
+      <p>My dissertation project, <strong>CipherVault</strong>, is a password manager built on FastAPI with Fernet symmetric encryption. Outside coursework, I've built and deployed <strong>Indish</strong> — a full production platform for a real two-branch restaurant business, covering the public site, a server-validated reservation flow, an admin dashboard, and a separate branch-aware loyalty program, all wired to WhatsApp for customer notifications. I've also built and launched sites for <strong>Spice 8 Pool Club</strong> (tournaments, league and live streams) and <strong>JayDex Couture</strong> (a boutique storefront the owner edits themselves).</p>
       <p>I care about the parts that don't show up in a screenshot: server-side validation that doesn't trust the client, httpOnly auth cookies instead of localStorage tokens, and databases that stay scoped to the thing they're supposed to own.</p>
-      <div class="about-quote">Three shipped systems, all linked below — no filler projects, no dead links.</div>
+      <div class="about-quote">Four live business sites and a security dissertation, all linked below. No filler projects, no dead links.</div>
     </div>
     <div class="about-stats">
-      <div class="stat-block"><div class="stat-num">2</div><div class="stat-label">Live production sites — indishzambia.com &amp; basavagroup.org</div></div>
+      <div class="stat-block"><div class="stat-num">4</div><div class="stat-label">Live sites for real businesses: Indish, Spice 8, JayDex Couture &amp; Basava Group</div></div>
       <div class="stat-block"><div class="stat-num">3</div><div class="stat-label">Public repositories, all linked from this page</div></div>
       <div class="stat-block"><div class="stat-num">BSc</div><div class="stat-label">Computing &amp; Cybersecurity — University of Greenwich, in progress</div></div>
     </div>
@@ -360,140 +412,333 @@ footer{padding:32px 60px;border-top:1px solid var(--border-muted);display:flex;a
   </div>
 </section>
 
-<section id="projects" aria-labelledby="projects-h">
+<section id="projects" aria-labelledby="projects-h" data-view="client">
   <div class="section-num">03 / projects</div>
   <h2 class="section-title" id="projects-h">Things I've <span class="dim">shipped</span></h2>
+  <p class="proj-intro">Four live websites for real businesses, plus one security project. <strong>Client view</strong> explains each one in plain English: what the business needed and what I delivered. Switch to <strong>Technical view</strong> for how it's built.</p>
 
-  <article class="project reveal">
+  <div class="proj-toolbar">
+    <div class="chips" role="group" aria-label="Filter projects">
+      <button class="chip" data-filter="all" aria-pressed="true">All<span class="n">5</span></button>
+      <button class="chip" data-filter="business" aria-pressed="false">Business websites<span class="n">4</span></button>
+      <button class="chip" data-filter="app" aria-pressed="false">Web apps<span class="n">3</span></button>
+      <button class="chip" data-filter="security" aria-pressed="false">Security<span class="n">1</span></button>
+    </div>
+    <div class="view-toggle" role="group" aria-label="Choose how projects are explained">
+      <button data-view="client" aria-pressed="true">👤 Client view</button>
+      <button data-view="tech" aria-pressed="false">⚙ Technical view</button>
+    </div>
+  </div>
+  <div class="proj-count" id="projCount" aria-live="polite">Showing 5 of 5 projects</div>
+
+  <!-- INDISH -->
+  <article class="project reveal" data-cat="business app">
+    <div class="browser">
+      <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+      <a class="url" href="https://indishzambia.com" target="_blank" rel="noopener noreferrer"><span class="lock">🔒</span>indishzambia.com</a>
+    </div>
     <div class="project-hd">
       <div>
         <div class="project-flag">● live in production</div>
         <div class="project-title">Indish — Restaurant &amp; Loyalty Platform</div>
-        <div class="project-live">→ <a href="https://indishzambia.com" target="_blank" rel="noopener noreferrer">indishzambia.com</a></div>
+        <div class="project-tag">Online menu, table bookings and a rewards program for a two-branch restaurant.</div>
       </div>
       <div class="project-links">
-        <a href="https://indishzambia.com" target="_blank" rel="noopener noreferrer" class="project-link">Live site ↗</a>
+        <a href="https://indishzambia.com" target="_blank" rel="noopener noreferrer" class="project-link">Visit site ↗</a>
         <a href="https://github.com/charanbassvabb-sudo/Indish-loyalty-dashboard-and-website" target="_blank" rel="noopener noreferrer" class="project-link">Source ↗</a>
       </div>
     </div>
+    <div class="facts">
+      <div class="fact"><small>Client</small><span>Indish Restaurant</span></div>
+      <div class="fact"><small>Industry</small><span>Restaurant &amp; hospitality</span></div>
+      <div class="fact"><small>Location</small><span>Lusaka &amp; Kitwe</span></div>
+      <div class="fact"><small>Scope</small><span>Full platform, end to end</span></div>
+    </div>
     <div class="project-body">
-      <p class="project-desc">A full-stack platform for a real Indian restaurant with <strong>two independently-run branches</strong> (Lusaka &amp; Kitwe): public site with a 190-dish menu, a mobile-money-backed reservation flow, a staff admin dashboard, and a <strong>separate</strong> branch-aware loyalty program that talks to it only through deep links — never a shared login or database.</p>
-      <div class="badges">
-        <span class="badge">React + Vite + TS</span><span class="badge">Express + Prisma</span><span class="badge">TanStack Start (SSR)</span><span class="badge">MySQL</span><span class="badge">WhatsApp Cloud API</span><span class="badge">Nginx + PM2 · DigitalOcean</span>
+      <div class="view-client">
+        <div class="goal-label">The goal</div>
+        <p class="goal">Let guests browse the menu and book a table online at either branch, keep staff informed instantly, and reward regular customers.</p>
+        <ul class="features">
+          <li class="feature"><span class="feature-ico">🍛</span><div><b>Online menu</b><p>All 190 dishes, ready for guests to browse before they visit.</p></div></li>
+          <li class="feature"><span class="feature-ico">📅</span><div><b>Table reservations</b><p>Guests book online with a mobile-money deposit. The rules are checked automatically, so no-shows cost less.</p></div></li>
+          <li class="feature"><span class="feature-ico">💬</span><div><b>WhatsApp confirmations</b><p>Each confirmed booking sends the customer a confirmation and alerts staff right away.</p></div></li>
+          <li class="feature"><span class="feature-ico">📊</span><div><b>Staff dashboard</b><p>Staff manage bookings for both branches from one screen.</p></div></li>
+          <li class="feature"><span class="feature-ico">⭐</span><div><b>Loyalty program</b><p>Rewards for each branch that bring regular customers back.</p></div></li>
+        </ul>
+        <div class="outcome"><b>Result →</b><span>Live at indishzambia.com and taking bookings for both branches.</span></div>
       </div>
-      <ul class="eng-notes">
-        <li><strong>Nothing client-trusted:</strong> the ZMW 100/guest deposit and the rolling 24-hour booking window are both enforced server-side (Zod <code>superRefine</code>), not just in the UI.</li>
-        <li><strong>Two databases, one server:</strong> the restaurant backend and the loyalty app each own a separate MySQL database — connected to each other only by pre-filled deep links, so a bug in one can't touch the other's data.</li>
-        <li><strong>Real notifications:</strong> confirmed bookings trigger an approved WhatsApp Business template to the customer and a free-text alert to staff via Meta's Cloud API.</li>
-        <li><strong>Auth done properly:</strong> admin sessions use JWT in httpOnly cookies (not localStorage), behind rate limiting, Helmet, and CORS scoped to the real origin.</li>
-        <li><strong>Deployed, not demoed:</strong> Nginx + PM2 on a DigitalOcean droplet with Let's Encrypt TLS — this is the config actually serving indishzambia.com.</li>
-      </ul>
-      <div class="diagram-wrap">
-        <svg viewBox="0 0 900 470" role="img" aria-labelledby="diagTitle diagDesc">
-          <title id="diagTitle">Indish system architecture</title>
-          <desc id="diagDesc">Browser connects to a Nginx reverse proxy on a DigitalOcean droplet serving the React frontend and Express backend, which writes to a MySQL "indish" database and calls the WhatsApp Cloud API. A separately-deployed TanStack Start loyalty app writes to a separate MySQL "indish_loyalty" database on the same server and also calls the WhatsApp Cloud API. The backend and loyalty app connect to each other only via deep links, not a shared database.</desc>
-          <defs>
-            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M0 0L10 5L0 10z" fill="#58a6ff"/>
-            </marker>
-          </defs>
-          <style>
-            .dbox{fill:#161b22;stroke:#30363d;stroke-width:1.5;rx:8}
-            .dtext{font-family:'JetBrains Mono',monospace;fill:#e6edf3;font-size:13px}
-            .dtext2{font-family:'JetBrains Mono',monospace;fill:#8b949e;font-size:11px}
-            .dgroup{fill:none;stroke:#30363d;stroke-width:1;stroke-dasharray:4 4;rx:12}
-            .dgrouplabel{font-family:'JetBrains Mono',monospace;fill:#6e7681;font-size:11px}
-            .dline{stroke:#58a6ff;stroke-width:1.5;fill:none;marker-end:url(#arrow)}
-            .ddash{stroke:#d29922;stroke-width:1.5;stroke-dasharray:5 4;fill:none}
-            .dlabel{font-family:'JetBrains Mono',monospace;fill:#d29922;font-size:10.5px}
-          </style>
+      <div class="view-tech">
+        <p class="project-desc">A full-stack platform for a real Indian restaurant with <strong>two independently-run branches</strong> (Lusaka &amp; Kitwe): public site with a 190-dish menu, a mobile-money-backed reservation flow, a staff admin dashboard, and a <strong>separate</strong> branch-aware loyalty program that talks to it only through deep links — never a shared login or database.</p>
+        <div class="badges">
+          <span class="badge">React + Vite + TS</span><span class="badge">Express + Prisma</span><span class="badge">TanStack Start (SSR)</span><span class="badge">MySQL</span><span class="badge">WhatsApp Cloud API</span><span class="badge">Nginx + PM2 · DigitalOcean</span>
+        </div>
+        <ul class="eng-notes">
+          <li><strong>Nothing client-trusted:</strong> the ZMW 100/guest deposit and the rolling 24-hour booking window are both enforced server-side (Zod <code>superRefine</code>), not just in the UI.</li>
+          <li><strong>Two databases, one server:</strong> the restaurant backend and the loyalty app each own a separate MySQL database — connected to each other only by pre-filled deep links, so a bug in one can't touch the other's data.</li>
+          <li><strong>Real notifications:</strong> confirmed bookings trigger an approved WhatsApp Business template to the customer and a free-text alert to staff via Meta's Cloud API.</li>
+          <li><strong>Auth done properly:</strong> admin sessions use JWT in httpOnly cookies (not localStorage), behind rate limiting, Helmet, and CORS scoped to the real origin.</li>
+          <li><strong>Deployed, not demoed:</strong> Nginx + PM2 on a DigitalOcean droplet with Let's Encrypt TLS — this is the config actually serving indishzambia.com.</li>
+        </ul>
+        <div class="diagram-wrap">
+          <svg viewBox="0 0 900 470" role="img" aria-labelledby="diagTitle diagDesc">
+            <title id="diagTitle">Indish system architecture</title>
+            <desc id="diagDesc">Browser connects to a Nginx reverse proxy on a DigitalOcean droplet serving the React frontend and Express backend, which writes to a MySQL "indish" database and calls the WhatsApp Cloud API. A separately-deployed TanStack Start loyalty app writes to a separate MySQL "indish_loyalty" database on the same server and also calls the WhatsApp Cloud API. The backend and loyalty app connect to each other only via deep links, not a shared database.</desc>
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" fill="#58a6ff"/>
+              </marker>
+            </defs>
+            <style>
+              .dbox{fill:#161b22;stroke:#30363d;stroke-width:1.5;rx:8}
+              .dtext{font-family:'JetBrains Mono',monospace;fill:#e6edf3;font-size:13px}
+              .dtext2{font-family:'JetBrains Mono',monospace;fill:#8b949e;font-size:11px}
+              .dgroup{fill:none;stroke:#30363d;stroke-width:1;stroke-dasharray:4 4;rx:12}
+              .dgrouplabel{font-family:'JetBrains Mono',monospace;fill:#6e7681;font-size:11px}
+              .dline{stroke:#58a6ff;stroke-width:1.5;fill:none;marker-end:url(#arrow)}
+              .ddash{stroke:#d29922;stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+              .dlabel{font-family:'JetBrains Mono',monospace;fill:#d29922;font-size:10.5px}
+            </style>
 
-          <rect x="360" y="16" width="180" height="46" rx="8" class="dbox"/>
-          <text x="450" y="44" text-anchor="middle" class="dtext">Browser</text>
+            <rect x="360" y="16" width="180" height="46" rx="8" class="dbox"/>
+            <text x="450" y="44" text-anchor="middle" class="dtext">Browser</text>
 
-          <rect x="640" y="16" width="220" height="46" rx="8" class="dbox"/>
-          <text x="750" y="38" text-anchor="middle" class="dtext">WhatsApp Cloud API</text>
-          <text x="750" y="53" text-anchor="middle" class="dtext2">Meta Business</text>
+            <rect x="640" y="16" width="220" height="46" rx="8" class="dbox"/>
+            <text x="750" y="38" text-anchor="middle" class="dtext">WhatsApp Cloud API</text>
+            <text x="750" y="53" text-anchor="middle" class="dtext2">Meta Business</text>
 
-          <rect x="55" y="115" width="410" height="200" rx="12" class="dgroup"/>
-          <text x="70" y="105" class="dgrouplabel">DigitalOcean droplet — Nginx + PM2</text>
+            <rect x="55" y="115" width="410" height="200" rx="12" class="dgroup"/>
+            <text x="70" y="105" class="dgrouplabel">DigitalOcean droplet — Nginx + PM2</text>
 
-          <rect x="80" y="150" width="170" height="60" rx="8" class="dbox"/>
-          <text x="165" y="176" text-anchor="middle" class="dtext">Frontend</text>
-          <text x="165" y="193" text-anchor="middle" class="dtext2">React + Vite (static)</text>
+            <rect x="80" y="150" width="170" height="60" rx="8" class="dbox"/>
+            <text x="165" y="176" text-anchor="middle" class="dtext">Frontend</text>
+            <text x="165" y="193" text-anchor="middle" class="dtext2">React + Vite (static)</text>
 
-          <rect x="270" y="150" width="175" height="60" rx="8" class="dbox"/>
-          <text x="357" y="176" text-anchor="middle" class="dtext">Backend</text>
-          <text x="357" y="193" text-anchor="middle" class="dtext2">Express + Prisma</text>
+            <rect x="270" y="150" width="175" height="60" rx="8" class="dbox"/>
+            <text x="357" y="176" text-anchor="middle" class="dtext">Backend</text>
+            <text x="357" y="193" text-anchor="middle" class="dtext2">Express + Prisma</text>
 
-          <rect x="540" y="150" width="220" height="66" rx="8" class="dbox"/>
-          <text x="650" y="174" text-anchor="middle" class="dtext">Loyalty App</text>
-          <text x="650" y="190" text-anchor="middle" class="dtext2">TanStack Start (SSR)</text>
-          <text x="650" y="205" text-anchor="middle" class="dtext2">deployed separately</text>
+            <rect x="540" y="150" width="220" height="66" rx="8" class="dbox"/>
+            <text x="650" y="174" text-anchor="middle" class="dtext">Loyalty App</text>
+            <text x="650" y="190" text-anchor="middle" class="dtext2">TanStack Start (SSR)</text>
+            <text x="650" y="205" text-anchor="middle" class="dtext2">deployed separately</text>
 
-          <rect x="130" y="390" width="640" height="66" rx="12" class="dgroup"/>
-          <text x="145" y="380" class="dgrouplabel">MySQL — single server, two isolated databases</text>
-          <rect x="175" y="408" width="200" height="34" rx="7" class="dbox"/>
-          <text x="275" y="430" text-anchor="middle" class="dtext2">db: indish</text>
-          <rect x="510" y="408" width="220" height="34" rx="7" class="dbox"/>
-          <text x="620" y="430" text-anchor="middle" class="dtext2">db: indish_loyalty</text>
+            <rect x="130" y="390" width="640" height="66" rx="12" class="dgroup"/>
+            <text x="145" y="380" class="dgrouplabel">MySQL — single server, two isolated databases</text>
+            <rect x="175" y="408" width="200" height="34" rx="7" class="dbox"/>
+            <text x="275" y="430" text-anchor="middle" class="dtext2">db: indish</text>
+            <rect x="510" y="408" width="220" height="34" rx="7" class="dbox"/>
+            <text x="620" y="430" text-anchor="middle" class="dtext2">db: indish_loyalty</text>
 
-          <path d="M420 62 L357 150" class="dline"/>
-          <path d="M480 62 L650 150" class="dline"/>
-          <path d="M357 210 L275 408" class="dline"/>
-          <path d="M650 216 L620 408" class="dline"/>
-          <path d="M420 178 L640 45" class="dline" stroke-dasharray="2 3"/>
-          <path d="M660 178 L720 62" class="dline" stroke-dasharray="2 3"/>
+            <path d="M420 62 L357 150" class="dline"/>
+            <path d="M480 62 L650 150" class="dline"/>
+            <path d="M357 210 L275 408" class="dline"/>
+            <path d="M650 216 L620 408" class="dline"/>
+            <path d="M420 178 L640 45" class="dline" stroke-dasharray="2 3"/>
+            <path d="M660 178 L720 62" class="dline" stroke-dasharray="2 3"/>
 
-          <path d="M445 180 L540 180" class="ddash"/>
-          <text x="492" y="230" text-anchor="middle" class="dlabel">deep links only —</text>
-          <text x="492" y="243" text-anchor="middle" class="dlabel">no shared DB or login</text>
-        </svg>
+            <path d="M445 180 L540 180" class="ddash"/>
+            <text x="492" y="230" text-anchor="middle" class="dlabel">deep links only —</text>
+            <text x="492" y="243" text-anchor="middle" class="dlabel">no shared DB or login</text>
+          </svg>
+        </div>
       </div>
     </div>
   </article>
 
-  <article class="project reveal">
+  <!-- SPICE 8 -->
+  <article class="project reveal" data-cat="business app">
+    <div class="browser">
+      <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+      <a class="url" href="https://spice-8.com" target="_blank" rel="noopener noreferrer"><span class="lock">🔒</span>spice-8.com</a>
+    </div>
     <div class="project-hd">
       <div>
-        <div class="project-flag">● dissertation project · 2025</div>
-        <div class="project-title">CipherVault</div>
+        <div class="project-flag">● live in production</div>
+        <div class="project-title">Spice 8 Pool Club</div>
+        <div class="project-tag">Tournaments, a club league and live-streamed finals for a pool club.</div>
+      </div>
+      <div class="project-links">
+        <a href="https://spice-8.com" target="_blank" rel="noopener noreferrer" class="project-link">Visit site ↗</a>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact"><small>Client</small><span>Spice 8 Pool Club</span></div>
+      <div class="fact"><small>Industry</small><span>Sport &amp; entertainment</span></div>
+      <div class="fact"><small>Location</small><span>Chaholi Rd, Lusaka</span></div>
+      <div class="fact"><small>Scope</small><span>Web app + member area</span></div>
+    </div>
+    <div class="project-body">
+      <div class="view-client">
+        <div class="goal-label">The goal</div>
+        <p class="goal">Give players one place to find tournaments, follow the league and watch the finals, and give the club a way to earn from memberships.</p>
+        <ul class="features">
+          <li class="feature"><span class="feature-ico">🏆</span><div><b>Free bracket tool</b><p>Organisers add players, draw at random, record winners and print a bracket with the club header. It supports knockout, round-robin and group formats, and no account is needed.</p></div></li>
+          <li class="feature"><span class="feature-ico">📋</span><div><b>Club league</b><p>League table and fixtures, online for every player.</p></div></li>
+          <li class="feature"><span class="feature-ico">📺</span><div><b>Live streams &amp; replays</b><p>Live-streamed finals, plus an archive of recordings to watch later.</p></div></li>
+          <li class="feature"><span class="feature-ico">💳</span><div><b>Paid membership</b><p>Members pay with Airtel Money. Silver membership unlocks every stream, the recordings and chat.</p></div></li>
+          <li class="feature"><span class="feature-ico">📞</span><div><b>Prices &amp; private room</b><p>ZK 5 game tokens and a private room for up to 12 people, bookable with one tap to call.</p></div></li>
+        </ul>
+        <div class="outcome"><b>Result →</b><span>The club's tournaments, league, broadcasts and memberships all live in one place at spice-8.com.</span></div>
+      </div>
+      <div class="view-tech">
+        <p class="project-desc">A server-rendered web app for a Lusaka pool club, with public pages for pricing, tournaments and the league, a <strong>signed-in member area</strong> that gates live streams, recordings and chat, and a <strong>bracket generator</strong> that anyone can use without an account.</p>
+        <div class="badges">
+          <span class="badge">React</span><span class="badge">TanStack Start (SSR)</span><span class="badge">TanStack Query</span><span class="badge">Member auth</span><span class="badge">Airtel Money</span>
+        </div>
+        <ul class="eng-notes">
+          <li><strong>Server-rendered:</strong> pages arrive with their content already in the HTML. They load quickly on mobile data and search engines can read them.</li>
+          <li><strong>Data layer:</strong> TanStack Query handles queries and mutations against the club API, and an auth context gates member-only content.</li>
+          <li><strong>Bracket engine:</strong> single &amp; double elimination, round robin, and hybrid group → knockout, with random draws and a printable bracket that carries the club header.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- JAYDEX -->
+  <article class="project reveal" data-cat="business">
+    <div class="browser">
+      <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+      <a class="url" href="https://jaydexcouture.com" target="_blank" rel="noopener noreferrer"><span class="lock">🔒</span>jaydexcouture.com</a>
+    </div>
+    <div class="project-hd">
+      <div>
+        <div class="project-flag">● live in production</div>
+        <div class="project-title">JayDex Couture — Boutique Storefront</div>
+        <div class="project-tag">An online shop window for a fashion boutique, with ordering over WhatsApp.</div>
+      </div>
+      <div class="project-links">
+        <a href="https://jaydexcouture.com" target="_blank" rel="noopener noreferrer" class="project-link">Visit site ↗</a>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact"><small>Client</small><span>JayDex Couture</span></div>
+      <div class="fact"><small>Industry</small><span>Fashion retail</span></div>
+      <div class="fact"><small>Location</small><span>Kabwata, Lusaka</span></div>
+      <div class="fact"><small>Scope</small><span>Storefront + owner editor</span></div>
+    </div>
+    <div class="project-body">
+      <div class="view-client">
+        <div class="goal-label">The goal</div>
+        <p class="goal">Show the boutique's collection to customers across Zambia, make ordering as easy as sending a message, and let the owner keep the site up to date without a developer.</p>
+        <ul class="features">
+          <li class="feature"><span class="feature-ico">👗</span><div><b>Collection showcase</b><p>Dresses, suits, authentic shoes and handbags, presented with a boutique look.</p></div></li>
+          <li class="feature"><span class="feature-ico">💬</span><div><b>Order on WhatsApp</b><p>Customers tap once to order and chat with the shop directly. There's no checkout form to slow them down.</p></div></li>
+          <li class="feature"><span class="feature-ico">🚚</span><div><b>Nationwide delivery</b><p>The site makes it clear that orders deliver to every part of Zambia.</p></div></li>
+          <li class="feature"><span class="feature-ico">✏️</span><div><b>Owner-editable</b><p>A private, password-protected editor lets the owner change products and text themselves.</p></div></li>
+        </ul>
+        <div class="outcome"><b>Result →</b><span>A boutique-quality online shop the owner keeps up to date, live at jaydexcouture.com.</span></div>
+      </div>
+      <div class="view-tech">
+        <p class="project-desc">A React single-page storefront on Netlify, with a separate <strong>content editor</strong> behind Netlify Identity login so the owner can manage content without touching code.</p>
+        <div class="badges">
+          <span class="badge">React + Vite</span><span class="badge">React Router</span><span class="badge">Netlify</span><span class="badge">Netlify Identity</span><span class="badge">CMS editor</span>
+        </div>
+        <ul class="eng-notes">
+          <li><strong>Fixed an auth race:</strong> React Router was clearing the invite and password-recovery tokens from the URL hash before Identity could read them. The fix loads the Identity widget as a blocking script ahead of the app bundle.</li>
+          <li><strong>Editor kept private:</strong> the <code>/cms</code> editor requires a login and is marked <code>noindex</code>, so it stays out of search results.</li>
+          <li><strong>No server to maintain:</strong> it runs as a static build on Netlify's CDN, so it's fast on mobile data and costs the client almost nothing to host.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- BASAVA GROUP -->
+  <article class="project reveal" data-cat="business">
+    <div class="browser">
+      <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+      <a class="url" href="https://basavagroup.org" target="_blank" rel="noopener noreferrer"><span class="lock">🔒</span>basavagroup.org</a>
+    </div>
+    <div class="project-hd">
+      <div>
+        <div class="project-flag">● live in production</div>
+        <div class="project-title">Basava Group — Business Website</div>
+        <div class="project-tag">One clear online home for a company with three divisions.</div>
+      </div>
+      <div class="project-links">
+        <a href="https://basavagroup.org" target="_blank" rel="noopener noreferrer" class="project-link">Visit site ↗</a>
+        <a href="https://github.com/charanbassvabb-sudo/Basava-website" target="_blank" rel="noopener noreferrer" class="project-link">Source ↗</a>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact"><small>Client</small><span>Basava Group</span></div>
+      <div class="fact"><small>Industry</small><span>Construction · finance · community</span></div>
+      <div class="fact"><small>Location</small><span>Lusaka</span></div>
+      <div class="fact"><small>Scope</small><span>Business website</span></div>
+    </div>
+    <div class="project-body">
+      <div class="view-client">
+        <div class="goal-label">The goal</div>
+        <p class="goal">Explain a diversified organisation clearly, so visitors quickly find the division they need and get in touch.</p>
+        <ul class="features">
+          <li class="feature"><span class="feature-ico">🏗️</span><div><b>Three divisions, one site</b><p>Construction, financial advisory and community development each have their own clear section.</p></div></li>
+          <li class="feature"><span class="feature-ico">📨</span><div><b>Built to bring in enquiries</b><p>The layout is designed to get visitors to make contact, with nothing decorative in the way.</p></div></li>
+        </ul>
+        <div class="outcome"><b>Result →</b><span>Live at basavagroup.org as the group's public face.</span></div>
+      </div>
+      <div class="view-tech">
+        <p class="project-desc">A lightweight, dependency-free static site. It loads fast and is easy to host and maintain.</p>
+        <div class="badges">
+          <span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CIPHERVAULT -->
+  <article class="project reveal" data-cat="security app">
+    <div class="browser">
+      <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+      <a class="url" href="https://github.com/charanbassvabb-sudo/CipherVault" target="_blank" rel="noopener noreferrer"><span class="lock">⌥</span>github.com/charanbassvabb-sudo/CipherVault</a>
+    </div>
+    <div class="project-hd">
+      <div>
+        <div class="project-flag alt">● dissertation project · 2025</div>
+        <div class="project-title">CipherVault — Password Manager</div>
+        <div class="project-tag">An encrypted password manager, built as my final-year dissertation.</div>
       </div>
       <div class="project-links">
         <a href="https://github.com/charanbassvabb-sudo/CipherVault" target="_blank" rel="noopener noreferrer" class="project-link">Source ↗</a>
       </div>
     </div>
+    <div class="facts">
+      <div class="fact"><small>Type</small><span>Dissertation</span></div>
+      <div class="fact"><small>Field</small><span>Cybersecurity</span></div>
+      <div class="fact"><small>Institution</small><span>Univ. of Greenwich</span></div>
+      <div class="fact"><small>Scope</small><span>Full-stack app</span></div>
+    </div>
     <div class="project-body">
-      <p class="project-desc">A full-stack password manager: register, log in, and store/retrieve/delete credentials that are <strong>encrypted at rest</strong> with Fernet symmetric encryption, never stored in plaintext. Built as my final-year dissertation for the BSc Computing &amp; Cybersecurity programme at the University of Greenwich.</p>
-      <div class="badges">
-        <span class="badge">FastAPI</span><span class="badge">Python</span><span class="badge">MySQL</span><span class="badge">Fernet encryption</span>
+      <div class="view-client">
+        <div class="goal-label">Why it matters to you</div>
+        <p class="goal">It shows how I handle sensitive data. I bring the same habits to every client site that stores customer details.</p>
+        <ul class="features">
+          <li class="feature"><span class="feature-ico">🔐</span><div><b>Encrypted at rest</b><p>Passwords are encrypted before they are saved, so a stolen database alone is useless.</p></div></li>
+          <li class="feature"><span class="feature-ico">👤</span><div><b>Your data stays yours</b><p>Users can only see or delete their own records.</p></div></li>
+        </ul>
+        <div class="outcome"><b>Result →</b><span>The project behind my BSc in Computing &amp; Cybersecurity.</span></div>
       </div>
-      <ul class="eng-notes">
-        <li><strong>Encryption at rest:</strong> every stored credential is symmetrically encrypted with Fernet before it touches the database — a compromised DB dump alone isn't enough to read passwords.</li>
-        <li><strong>Scoped access:</strong> users can only ever retrieve or delete records tied to their own authenticated session.</li>
-      </ul>
+      <div class="view-tech">
+        <p class="project-desc">A full-stack password manager: register, log in, and store/retrieve/delete credentials that are <strong>encrypted at rest</strong> with Fernet symmetric encryption, never stored in plaintext.</p>
+        <div class="badges">
+          <span class="badge">FastAPI</span><span class="badge">Python</span><span class="badge">MySQL</span><span class="badge">Fernet encryption</span>
+        </div>
+        <ul class="eng-notes">
+          <li><strong>Encryption at rest:</strong> every stored credential is symmetrically encrypted with Fernet before it touches the database — a compromised DB dump alone isn't enough to read passwords.</li>
+          <li><strong>Scoped access:</strong> users can only ever retrieve or delete records tied to their own authenticated session.</li>
+        </ul>
+      </div>
     </div>
   </article>
 
-  <article class="project reveal">
-    <div class="project-hd">
-      <div>
-        <div class="project-flag">● live in production</div>
-        <div class="project-title">Basava Group — Business Website</div>
-        <div class="project-live">→ <a href="https://basavagroup.org" target="_blank" rel="noopener noreferrer">basavagroup.org</a></div>
-      </div>
-      <div class="project-links">
-        <a href="https://basavagroup.org" target="_blank" rel="noopener noreferrer" class="project-link">Live site ↗</a>
-        <a href="https://github.com/charanbassvabb-sudo/Basava-website" target="_blank" rel="noopener noreferrer" class="project-link">Source ↗</a>
-      </div>
+  <div class="proj-cta reveal">
+    <div>
+      <h3>Need a site like one of these?</h3>
+      <p>Tell me about your business. I'll reply with an honest scope and timeline.</p>
     </div>
-    <div class="project-body">
-      <p class="project-desc">The public web presence for a diversified Lusaka-based organisation spanning <strong>construction, financial advisory, and community development</strong> — built for clarity and conversion rather than decoration, and live in production today.</p>
-      <div class="badges">
-        <span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span>
-      </div>
+    <div class="hero-ctas">
+      <a href="https://wa.me/260964599763" target="_blank" rel="noopener noreferrer" class="btn btn-primary">💬 WhatsApp me</a>
+      <a href="#contact" class="btn btn-ghost">Send a message →</a>
     </div>
-  </article>
+  </div>
 </section>
 
 <section id="cv" aria-labelledby="cv-h">
@@ -582,6 +827,32 @@ window.addEventListener('scroll',()=>{
   document.querySelectorAll('main section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-160)cur=s.id;});
   navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
 });
+
+// PROJECTS — filter chips + client/technical view toggle
+const projSec=document.getElementById('projects');
+const projCards=[...projSec.querySelectorAll('.project')];
+const projCount=document.getElementById('projCount');
+projSec.querySelectorAll('.chip').forEach(chip=>chip.addEventListener('click',()=>{
+  const f=chip.dataset.filter;
+  projSec.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===chip?'true':'false'));
+  let shown=0;
+  projCards.forEach(card=>{
+    const match=f==='all'||card.dataset.cat.split(' ').includes(f);
+    card.classList.toggle('is-hidden',!match);
+    card.classList.remove('pop');
+    if(match){shown++;card.classList.add('visible');void card.offsetWidth;card.classList.add('pop');}
+  });
+  projCount.textContent='Showing '+shown+' of '+projCards.length+' projects';
+}));
+const setView=(v)=>{
+  projSec.dataset.view=v;
+  projSec.querySelectorAll('.view-toggle button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===v?'true':'false'));
+};
+projSec.querySelectorAll('.view-toggle button').forEach(b=>b.addEventListener('click',()=>{
+  setView(b.dataset.view);
+  try{localStorage.setItem('proj-view',b.dataset.view);}catch(e){}
+}));
+try{const saved=localStorage.getItem('proj-view');if(saved==='tech')setView('tech');}catch(e){}
 
 // LIVE GITHUB STATS (progressive enhancement — static fallback already in the HTML)
 (async()=>{
